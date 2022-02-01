@@ -20,7 +20,7 @@ class LambdaDemo extends Component {
   render() {
     const { loading, msg } = this.state
 
-    return (
+    return (      
       <p>
         <button onClick={this.handleClick("hello yellow marshmallow")}>Welcome mesasge</button>
         <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
@@ -29,6 +29,36 @@ class LambdaDemo extends Component {
         <span>{msg}</span>
       </p>
     )
+  }
+}
+
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+
+  }
+
+  handleSubmit(event) {
+    alert('A name was submited: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+      <label>Name:
+        <input type="text" value={this.state.value} onChange={this.handleChange} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+    );
   }
 }
 
@@ -42,6 +72,7 @@ class App extends Component {
             Edit <code>src/App.js</code> and save to reload.
           </p>
           <LambdaDemo />
+          <NameForm />
         </header>
       </div>
     )
